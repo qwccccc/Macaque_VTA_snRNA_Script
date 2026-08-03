@@ -35,14 +35,8 @@ mb/
 Python 环境由 `uv` 管理，项目要求 Python 3.12 或更高版本：
 
 ```bash
-cd /home/chaiqw/project/mb
 uv sync
 ```
 
 主要分析在 R/Jupyter notebook 中执行，需安装 Seurat、Harmony、SoupX、scDblFinder、anndata、reticulate 及其依赖。涉及 Python 的 R notebook 使用项目虚拟环境：
 
-```r
-use_virtualenv("/home/chaiqw/project/mb/.venv")
-```
-
-资源密集型 notebook 中目前设置了最多 64 个 worker；在共享服务器上执行前，请按当时可用资源调整该参数。

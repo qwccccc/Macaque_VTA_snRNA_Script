@@ -7,7 +7,7 @@
 分析和后续维护使用 `Script/` 中对应的文件。
 
 ```text
-mb/
+Macaque_VTA_snRNA_Script/
 ├── Script/                         # 主要分析 notebook
 │   ├── 1_VTA.ipynb                 # VTA 基础分析版本
 │   ├── 1_VTA_new.ipynb             # VTA QC、去双细胞、整合和初步注释

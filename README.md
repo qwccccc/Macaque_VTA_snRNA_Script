@@ -2,18 +2,18 @@
 
 本项目包含猕猴腹侧被盖区（VTA）单核 RNA 测序数据的预处理、质量控制、细胞类型聚类和结果整合 notebook。
 
-## 当前目录状态
+## 项目结构
 
-分析 notebook 正在从项目根目录逐步整理至 `Script/`。部分根目录 notebook 仍在运行，因此当前保留原位置；待其运行结束后再完成迁移。新分析和后续维护应优先使用 `Script/` 中对应的文件，避免在同一分析步骤维护两份版本。
+分析和后续维护使用 `Script/` 中对应的文件。
 
 ```text
 mb/
-├── Script/                         # 正在整理中的主要分析 notebook
+├── Script/                         # 主要分析 notebook
 │   ├── 1_VTA.ipynb                 # VTA 基础分析版本
 │   ├── 1_VTA_new.ipynb             # VTA QC、去双细胞、整合和初步注释
 │   ├── 2_VTA_DA_cluster.ipynb      # DA 细胞重聚类和跨物种注释比较
 │   ├── 2_VTA_nonneuron_cluster.ipynb # 非神经元细胞重聚类
-│   ├── 3_VTA_merge_dataset.ipynb       # 合并 DA、非神经元和其他神经元结果，待迁移
+│   ├── 3_VTA_merge_dataset.ipynb    # 合并 DA、非神经元和其他神经元结果
 │   └── soupX.ipynb                 # VTA 文库 SoupX 环境 RNA 校正
 ├── pyproject.toml                   # Python 环境与依赖
 └── uv.lock                          # 锁定的 Python 依赖版本
@@ -39,4 +39,3 @@ uv sync
 ```
 
 主要分析在 R/Jupyter notebook 中执行，需安装 Seurat、Harmony、SoupX、scDblFinder、anndata、reticulate 及其依赖。涉及 Python 的 R notebook 使用项目虚拟环境：
-

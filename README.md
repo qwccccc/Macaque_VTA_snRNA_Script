@@ -9,11 +9,11 @@
 ```text
 Macaque_VTA_snRNA_Script/
 ├── Script/                         # 主要分析 notebook
-│   ├── 1_VTA.ipynb                 # VTA 基础分析版本
 │   ├── 1_VTA_new.ipynb             # VTA QC、去双细胞、整合和初步注释
 │   ├── 2_VTA_DA_cluster.ipynb      # DA 细胞重聚类和跨物种注释比较
 │   ├── 2_VTA_nonneuron_cluster.ipynb # 非神经元细胞重聚类
 │   ├── 3_VTA_merge_dataset.ipynb    # 合并 DA、非神经元和其他神经元结果
+│   ├── 2_VTA_neuron_cluster.ipynb
 │   └── soupX.ipynb                 # VTA 文库 SoupX 环境 RNA 校正
 ├── pyproject.toml                   # Python 环境与依赖
 └── uv.lock                          # 锁定的 Python 依赖版本

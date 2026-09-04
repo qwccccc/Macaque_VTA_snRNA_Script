@@ -8,27 +8,29 @@
 
 ```text
 Macaque_VTA_snRNA_Script/
-├── Script/                         # 主要分析 notebook
-│   ├── 1_VTA_new.ipynb             # VTA QC、去双细胞、整合和初步注释
-│   ├── 2_VTA_DA_cluster.ipynb      # DA 细胞重聚类和跨物种注释比较
+├── Script/                           # 主要分析 notebook
+│   ├── 0_soupX.ipynb                 # VTA 文库 SoupX 环境 RNA 校正
+│   ├── 1_VTA_new.ipynb               # VTA QC、去双细胞、整合和初步注释
+│   ├── 2_VTA_DA_cluster.ipynb        # DA细胞重聚类
+│   ├── 2_VTA_neuron_cluster.ipynb    # 神经元细胞重聚类
 │   ├── 2_VTA_nonneuron_cluster.ipynb # 非神经元细胞重聚类
-│   ├── 3_VTA_merge_dataset.ipynb    # 合并 DA、非神经元和其他神经元结果
-│   ├── 2_VTA_neuron_cluster.ipynb
-│   └── soupX.ipynb                 # VTA 文库 SoupX 环境 RNA 校正
-├── pyproject.toml                   # Python 环境与依赖
-└── uv.lock                          # 锁定的 Python 依赖版本
+│   ├── 3_VTA_merge_datasets.ipynb     # 合并 DA、非神经元和其他神经元结果
+│   └── 4_VTA_compare_to_rat.ipynb    # DA神经元与Rat跨物种注释比较
+├── pyproject.toml                    # Python 环境与依赖
+└── uv.lock                           # 锁定的 Python 依赖版本
 ```
 
 ## 分析流程
 
 推荐按以下顺序运行；每个 notebook 中的数据路径和关键参数均以代码为准。
 
-1. `Script/soupX.ipynb`：读取样本信息表，针对 `area == "VTA"` 的每个文库进行 SoupX 校正；结果写入 `soupx_vta/`，并输出汇总 CSV 和 XLSX。
+1. `Script/0_soupX.ipynb`：读取样本信息表，针对 `area == "VTA"` 的每个文库进行 SoupX 校正；结果写入 `soupx_vta/`，并输出汇总 CSV 和 XLSX。
 2. `Script/1_VTA_new.ipynb`：从 `vta_new-1.h5ad` 建立 Seurat 对象，计算 QC 指标、使用 `scDblFinder` 去除双细胞、进行 SCTransform、Harmony 整合和初步细胞类型注释。
-3. `Script/2_VTA_DA_cluster.ipynb`：提取 DA 细胞，以 Animal 为批次进行 Harmony 重聚类，并与小鼠参考注释比较；输出 DA 聚类 RDS 和图件。
+3. `Script/2_VTA_DA_cluster.ipynb`：提取 DA 细胞，以 Animal 为批次进行 Harmony 重聚类，输出 DA 聚类 RDS 和图件。
+4. `Script/2_VTA_neuron_cluster.ipynb`：对非DA神经元细胞进行重聚类；输出聚类 RDS 和图件。
 4. `Script/2_VTA_nonneuron_cluster.ipynb`：对 Astro、Oligo、OPC、Micro、Endothelial 和 VLMC 等非神经元细胞进行重聚类；输出非神经元聚类 RDS 和图件。
-5. `Script/3_VTA_merge_dataset.ipynb`：合并 DA、非神经元和其他神经元结果，统一细胞类别与 cluster 命名，并生成最终整合对象和概览图。
-
+5. `Script/3_VTA_merge_datasets.ipynb`：合并 DA、非神经元和其他神经元结果，统一细胞类别与 cluster 命名，并生成最终整合对象和概览图。
+5. `Script/4_VTA_compare_to_rat.ipynb`：对macaque的DA神经元与Rat的DA神经元进行整合，跨物种分析特异的基因，并生成最终整合对象。
 
 ## 环境
 
